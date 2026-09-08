@@ -6,7 +6,9 @@ sections: who I am, what I work with, selected work, experience, education, cred
 Final-year B.E. Information Science & Engineering at Atria Institute of Technology,
 Bangalore. Graduating May 2027.
 
-**Live:** _deploying_ · **The long version:** [github.com/Aditya2k5here/portfolio](https://github.com/Aditya2k5here/portfolio)
+**Live:** [aditya2k5here.github.io/hr-portfolio](https://aditya2k5here.github.io/hr-portfolio/)
+
+**The long version:** [aditya2k5here.github.io/portfolio](https://aditya2k5here.github.io/portfolio/)
 
 ## Get in touch
 
