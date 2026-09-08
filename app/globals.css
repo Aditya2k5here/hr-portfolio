@@ -1,0 +1,359 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   ADITYA SRINIVAS — the short version
+
+   Same identity as the long portfolio: same near-black with a blue cast, same
+   single signal red, same two typefaces. What changes is the pacing. This one
+   is built to be read once, quickly, on a phone, by somebody who has four
+   other tabs open.
+
+   Six numbered movements. Every section states where you are (03 / 06) and
+   what it is, so you always know how much is left. That counter is the whole
+   trick: a recruiter will finish a page whose end they can see.
+   ============================================================================ */
+
+:root {
+  --void: #06070a;
+  --ink: #0a0b0f;
+  --panel: #0d0f14;
+  --panel-2: #12151b;
+  --edge: #1a1e26;
+  --edge-2: #262b35;
+  --edge-3: #39404d;
+
+  --paper: #f2f3f5;
+  --grey-1: #9aa1ad;
+  --grey-2: #6b7280;
+  --grey-3: #454c59;
+
+  --sig: #e11d33;
+  --sig-lit: #ff2f47;
+  --sig-wash: rgb(225 29 51 / 0.1);
+  --sig-edge: rgb(225 29 51 / 0.34);
+
+  --r: 4px;
+  --r-lg: 10px;
+
+  --shell: 1240px;
+  --pad: clamp(18px, 4vw, 56px);
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-edge: var(--edge);
+  --color-paper: var(--paper);
+  --color-grey-1: var(--grey-1);
+  --color-sig: var(--sig);
+  --font-sans: var(--font-schibsted), 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-azeret), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background: var(--void);
+  }
+
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--paper);
+    font-family: var(--font-schibsted), 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: -0.011em;
+    /* clip, not hidden: `hidden` promotes body to a scroll container and
+       breaks anchors and viewport-rooted observers. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  p { margin: 0; text-wrap: pretty; }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { margin: 0; padding: 0; list-style: none; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--sig); color: var(--paper); }
+  :focus-visible { outline: 2px solid var(--sig-lit); outline-offset: 3px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+}
+
+@layer components {
+  .shell {
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--pad);
+  }
+
+  .m {
+    font-family: var(--font-azeret), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .tag {
+    font-family: var(--font-azeret), ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey-3);
+  }
+
+  /* ------------------------------------------------------------- movement --
+
+     The band that opens every section: the number, the title, and a bracketed
+     label on the far right. Reading it tells you where you are and how much is
+     left, which is the difference between scrolling and skimming out. */
+
+  .movement {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(16px, 3vw, 40px);
+    padding-block: 16px;
+    border-bottom: 1px solid var(--edge);
+  }
+
+  .movement-no {
+    font-family: var(--font-azeret), monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--sig);
+    white-space: nowrap;
+  }
+  .movement-no span {
+    color: var(--grey-3);
+  }
+
+  .movement-name {
+    font-family: var(--font-azeret), monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
+  }
+
+  .movement-label {
+    margin-left: auto;
+    font-family: var(--font-azeret), monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey-3);
+    white-space: nowrap;
+  }
+
+  /* ----------------------------------------------------------------- rule */
+
+  .rule-sig {
+    display: block;
+    width: 34px;
+    height: 2px;
+    background: var(--sig);
+  }
+
+  /* ----------------------------------------------------------------- chip */
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 23px;
+    padding-inline: 9px;
+    border: 1px solid var(--edge-2);
+    border-radius: 2px;
+    font-family: var(--font-azeret), monospace;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    color: var(--grey-1);
+    white-space: nowrap;
+    transition: border-color 220ms ease, color 220ms ease;
+  }
+
+  /* --------------------------------------------------------------- button */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding-inline: 22px;
+    border: 1px solid var(--edge-2);
+    border-radius: 3px;
+    font-family: var(--font-azeret), monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+  }
+  .btn:hover { border-color: var(--paper); }
+  .btn--sig {
+    background: var(--sig);
+    border-color: var(--sig);
+    color: #fff;
+  }
+  .btn--sig:hover { background: var(--sig-lit); border-color: var(--sig-lit); }
+
+  /* ----------------------------------------------------------------- card */
+
+  .card {
+    position: relative;
+    border: 1px solid var(--edge);
+    border-radius: var(--r-lg);
+    background: linear-gradient(180deg, var(--panel), var(--ink));
+    transition: border-color 260ms ease, transform 260ms ease;
+  }
+  .card:hover {
+    border-color: var(--edge-3);
+  }
+
+  /* A hairline that fills with the signal colour on hover. Cheap, and it makes
+     a static grid feel like it is listening. */
+  .card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--sig);
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card:hover::after { transform: scaleX(1); }
+
+  /* ------------------------------------------------------------------ row */
+
+  .row {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--edge);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    transition: background 240ms ease;
+  }
+  .row:hover { background: var(--panel); }
+
+  .row-arrow {
+    display: inline-block;
+    color: var(--sig);
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .row:hover .row-arrow { transform: translateX(5px); }
+
+  /* --------------------------------------------------------------- drawer */
+
+  .drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .drawer[data-on='1'] { grid-template-rows: 1fr; }
+  .drawer > * { overflow: hidden; min-height: 0; }
+
+  /* ------------------------------------------------------------- sidenote */
+
+  /* The vertical strip beside the hero. Pure texture; it says nothing the
+     page needs, so it is hidden from assistive tech and dropped on mobile. */
+  .sidenote {
+    font-family: var(--font-azeret), monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    line-height: 2.1;
+    text-transform: uppercase;
+    color: var(--grey-2);
+  }
+}
+
+/* ============================================================================
+   MOTION
+
+   Default state is VISIBLE. It only hides once the script confirms it is
+   running. If anything fails, the page is still readable, which matters more
+   than the animation.
+   ============================================================================ */
+
+.cut { opacity: 1; }
+
+html.js-cut .cut {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+html.js-cut .cut.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js-cut .cut.in .seq > * {
+  animation: seq 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+@keyframes seq {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .cut, html.js-cut .cut {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html.js-cut .cut.in .seq > * { animation: none; }
+}
+
+/* ============================================================================
+   MOBILE
+
+   Not a shrunk desktop. The hero becomes the photograph with the type on it,
+   the six-up skill grid becomes rows you can thumb, and the work list keeps
+   its images because on a phone an image is the fastest thing to parse.
+   ============================================================================ */
+
+@media (max-width: 767px) {
+  .movement { padding-block: 13px; }
+  .movement-label { display: none; }
+
+  .btn {
+    min-height: 52px;
+    width: 100%;
+  }
+
+  .sidenote { display: none; }
+}

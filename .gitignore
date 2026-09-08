@@ -1,0 +1,16 @@
+
+!.env.example
+# Source photography — plates in public/plates are the shipped, processed versions.
+*.tsbuildinfo
+.DS_Store
+.env*
+.next/
+WhatsApp Image*.jpeg
+hr/.next/
+hr/node_modules/
+hr/out/
+next-env.d.ts
+node_modules/
+out/
+plates-out/
+reference/
