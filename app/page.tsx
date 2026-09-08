@@ -4,6 +4,7 @@ import { Nav } from '@/components/Nav'
 import { Work } from '@/components/Work'
 import { Blob } from '@/components/Blob'
 import { Flow } from '@/components/Flow'
+import { asset } from '@/content/paths'
 import { profile } from '@/content/profile'
 import { cv } from '@/content/credentials'
 import { alsoBuilt, facts, skills, proof, experience } from '@/content/brief'
@@ -43,7 +44,7 @@ export default function Page() {
         <section className="relative isolate overflow-hidden">
           <div className="absolute inset-0 lg:left-[46%]" aria-hidden>
             <Image
-              src="/hero/portrait.webp"
+              src={asset('/hero/portrait.webp')}
               alt=""
               fill
               priority
